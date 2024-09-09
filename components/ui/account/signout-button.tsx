@@ -1,0 +1,21 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
+import { Button } from "../button";
+
+const SignOutButton = () => {
+  const router = useRouter();
+
+  return (
+    <Button
+      onClick={() => {
+        signOut();
+      }}
+    >
+      Sign Out
+    </Button>
+  );
+};
+
+export default SignOutButton;

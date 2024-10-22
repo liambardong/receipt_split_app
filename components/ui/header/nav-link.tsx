@@ -14,7 +14,7 @@ export default function NavLink({
 }: NavLinkProps) {
   return (
     <Button asChild variant="link">
-      <Link className={`${className}  text-base `} href={otherProps.href}>
+      <Link className={`${className}  text-xl `} href={otherProps.href}>
         {children}
       </Link>
     </Button>

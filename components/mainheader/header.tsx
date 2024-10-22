@@ -3,6 +3,7 @@ import Image from "next/image";
 import NavLink from "../ui/header/nav-link";
 import AccountButton from "../ui/account/account-button";
 import { ModeToggle } from "../ui/mode-toggle";
+import { SessionProvider } from "next-auth/react";
 
 export default function Header() {
   return (
@@ -18,13 +19,17 @@ export default function Header() {
           />
         </Link>
         <div className="flex space-x-4 items-center justify-center">
+          <NavLink href="/receipts">Home</NavLink>
+          <NavLink href="/receipts">About</NavLink>
           <NavLink href="/receipts">Past Receipts</NavLink>
           <NavLink href="/create">Create Receipts</NavLink>
         </div>
       </div>
       <div className="ml-auto flex space-x-4 items-center justify-center">
-        <AccountButton />
-        <ModeToggle />
+        <SessionProvider>
+          <AccountButton />
+          <ModeToggle />
+        </SessionProvider>
       </div>
     </header>
   );

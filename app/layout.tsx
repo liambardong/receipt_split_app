@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/mainheader/header";
 import { ThemeProvider } from "@/components/theme-provider";
-import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
 
-const inter = Inter({ subsets: ["latin"] });
+const dm_sans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "DivviUp",
@@ -22,12 +22,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning>
-        <ThemeProvider>
-          <div className="flex flex-col h-screen">
-            <Header />
-            <main className="flex-grow">{children}</main>
-          </div>
+      <body className={dm_sans.className} suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SessionProvider>
+            <div className="flex flex-col h-screen">
+              <Header />
+              <main className="flex-grow">{children}</main>
+            </div>
+          </SessionProvider>
         </ThemeProvider>
       </body>
     </html>

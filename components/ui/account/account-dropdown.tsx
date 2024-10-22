@@ -12,6 +12,7 @@ import {
 
 import SignOutButton from "./signout-button";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
 
 interface AccountDropdownProps {
   user: User;
@@ -22,7 +23,15 @@ export default async function AccountDropdown({ user }: AccountDropdownProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button>{user.name}</Button>
+        <Button>
+          <Avatar>
+            <AvatarImage src={user.image ? user.image : ""} />
+            <AvatarFallback>
+              {user.name?.charAt(0).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+          <p className="pl-2">{user.name}</p>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>

@@ -1,8 +1,8 @@
 import { auth } from "@/auth";
-import FriendsInfo from "@/components/ui/create-page/friends-info";
-import ReceiptInfo from "@/components/ui/create-page/receipt-info";
 import { redirect } from "next/navigation";
 import { NewReceiptProvider } from "../context/NewReceiptContext";
+import ReceiptComponent from "@/components/ui/create-page/receipt-component";
+import FriendsComponent from "@/components/ui/create-page/friends-component";
 
 export default async function CreatePage() {
   const session = await auth();
@@ -12,9 +12,13 @@ export default async function CreatePage() {
   }
   return (
     <NewReceiptProvider>
-      <div className="h-full flex items-center justify-center p-2 space-x-10">
-        <ReceiptInfo />
-        <FriendsInfo />
+      <div className="h-full w-full p-9 flex items-center justify-center p-2 space-x-10 grid grid-cols-3 gap-4">
+        <div className="h-full col-span-2">
+          <ReceiptComponent />
+        </div>
+        <div className="h-full">
+          <FriendsComponent />
+        </div>
       </div>
     </NewReceiptProvider>
   );

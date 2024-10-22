@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 
 const SignOutButton = () => {
   const router = useRouter();

@@ -1,5 +1,5 @@
 import { User } from "next-auth";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,11 +8,11 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../dropdown-menu";
+} from "../ui/dropdown-menu";
 
 import SignOutButton from "./signout-button";
 import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "../avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 interface AccountDropdownProps {
   user: User;

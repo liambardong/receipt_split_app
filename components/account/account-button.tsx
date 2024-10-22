@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 import Link from "next/link";
 
 import AccountDropdown from "./account-dropdown";

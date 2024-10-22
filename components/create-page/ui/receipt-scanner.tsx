@@ -9,6 +9,7 @@ import { X } from "lucide-react";
 import { Spinner } from "@nextui-org/spinner";
 import { Receipt } from "@/app/models/receipt";
 import { processReceiptImage } from "@/app/mock-data/new-receipt";
+import ReceiptItem from "./receipt-item";
 
 export default function ReceiptScanner() {
   const [file, setFile] = useState<File | null>(null);
@@ -122,18 +123,15 @@ export default function ReceiptScanner() {
             <div className="space-y-4">
               <div>
                 <h4 className="text-md font-semibold mb-2">Items</h4>
-                <ul className="space-y-2">
-                  {receipt.items.map((item, index) => (
-                    <li key={index} className="flex justify-between">
-                      <span>
-                        {item.quantity} x {item.name}{" "}
-                        {item.descriptors.length > 0 &&
-                          `(${item.descriptors.join(", ")})`}
-                      </span>
-                      <span>${(item.price * item.quantity).toFixed(2)}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="relative max-h-[60vh] overflow-y-auto">
+                  <ul className="space-y-2">
+                    {receipt.items.map((item, index) => (
+                      <li key={index} className="flex justify-between">
+                        <ReceiptItem item={item}></ReceiptItem>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           ) : (

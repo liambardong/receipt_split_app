@@ -24,13 +24,7 @@ export default async function AccountDropdown({ user }: AccountDropdownProps) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button>
-          <Avatar>
-            <AvatarImage src={user.image ? user.image : ""} />
-            <AvatarFallback>
-              {user.name?.charAt(0).toUpperCase()}
-            </AvatarFallback>
-          </Avatar>
-          <p className="pl-2">{user.name}</p>
+          <p className="pl-2 font-bold">{user.name}</p>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

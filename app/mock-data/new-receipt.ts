@@ -15,7 +15,7 @@ export const processReceiptImage = (file: File): Promise<Receipt> => {
           {
             name: "GRIMM WAVETABLE",
             quantity: 1,
-            price: 99.0,
+            price: 9.0,
             sub_items: [],
             descriptors: [],
           },

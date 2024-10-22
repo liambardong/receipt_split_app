@@ -71,16 +71,16 @@ export default function ReceiptScanner() {
       className=" h-full flex flex-col pb-8 align-middle"
     >
       <div className="h-full mb-4">
-        <TabsContent value="upload">
-          <div className="h-full ">
+        <TabsContent value="upload" className="h-full">
+          <div className="h-full flex items-center justify-center">
             {previewUrl ? (
-              <div className="flex justify-center h-full ">
+              <div className="h-full flex items-center justify-center">
                 {isProcessing ? (
-                  <div>
+                  <div className="flex items-center justify-center">
                     <Spinner color="primary" />
                   </div>
                 ) : (
-                  <div className="relative">
+                  <div className="relative max-h-[60vh] overflow-y-auto">
                     <img
                       src={previewUrl}
                       alt="Receipt preview"
@@ -98,10 +98,10 @@ export default function ReceiptScanner() {
                 )}
               </div>
             ) : (
-              <div className="grid w-full justify-center gap-1.5">
+              <div className="grid w-full place-items-center gap-1.5">
                 <Label
                   htmlFor="receipt"
-                  className="cursor-pointer p-4 border-2 border-dashed rounded-md text-center"
+                  className="cursor-pointer border-slate-400 p-4 border-2 border-dashed rounded-md text-center"
                 >
                   Click to upload receipt
                   <Input
@@ -117,7 +117,7 @@ export default function ReceiptScanner() {
             )}
           </div>
         </TabsContent>
-        <TabsContent value="items">
+        <TabsContent value="items" className="h-full">
           {receipt ? (
             <div className="space-y-4">
               <div>

@@ -10,6 +10,8 @@ import { Spinner } from "@nextui-org/spinner";
 import { Receipt } from "@/app/models/receipt";
 import { processReceiptImage } from "@/app/mock-data/new-receipt";
 import ReceiptItem from "./receipt-item";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import DynamicScrollArea from "@/components/util/dyanmic-scroll-area";
 
 export default function ReceiptScanner() {
   const [file, setFile] = useState<File | null>(null);
@@ -69,9 +71,9 @@ export default function ReceiptScanner() {
       defaultValue="upload"
       value={activeTab}
       onValueChange={setActiveTab}
-      className=" h-full flex flex-col pb-8 align-middle"
+      className="h-full flex flex-col pb-8 align-middle"
     >
-      <div className="h-full mb-4">
+      <div className="h-full mb-1">
         <TabsContent value="upload" className="h-full">
           <div className="h-full flex items-center justify-center">
             {previewUrl ? (
@@ -81,7 +83,7 @@ export default function ReceiptScanner() {
                     <Spinner color="primary" />
                   </div>
                 ) : (
-                  <div className="relative max-h-[60vh] overflow-y-auto">
+                  <DynamicScrollArea>
                     <img
                       src={previewUrl}
                       alt="Receipt preview"
@@ -95,7 +97,7 @@ export default function ReceiptScanner() {
                     >
                       <X className="h-4 w-4" />
                     </Button>
-                  </div>
+                  </DynamicScrollArea>
                 )}
               </div>
             ) : (
@@ -118,24 +120,22 @@ export default function ReceiptScanner() {
             )}
           </div>
         </TabsContent>
-        <TabsContent value="items" className="h-full">
+        <TabsContent value="items" className="h-full overflow-hidden">
           {receipt ? (
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-md font-semibold mb-2">Items</h4>
-                <div className="relative max-h-[60vh] overflow-y-auto">
-                  <ul className="space-y-2">
-                    {receipt.items.map((item, index) => (
-                      <li key={index} className="flex justify-between">
-                        <ReceiptItem item={item}></ReceiptItem>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+            <div className="flex flex-col h-full ">
+              <h4 className="text-md font-semibold mb-2">Items</h4>
+              <DynamicScrollArea>
+                <ul className="space-y-2">
+                  {receipt.items.map((item, index) => (
+                    <li key={index} className="flex justify-between">
+                      <ReceiptItem item={item} />
+                    </li>
+                  ))}
+                </ul>
+              </DynamicScrollArea>
             </div>
           ) : (
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground p-">
               No receipt data to display. Please upload and process a receipt
               first.
             </p>

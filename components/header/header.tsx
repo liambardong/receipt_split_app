@@ -1,9 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import NavLink from "./nav-link";
-import AccountButton from "../account/account-button";
-import { ModeToggle } from "../ui/mode-toggle";
-import { SessionProvider } from "next-auth/react";
+import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 
 export default function Header() {
   return (
@@ -26,10 +24,12 @@ export default function Header() {
         </div>
       </div>
       <div className="ml-auto flex space-x-4 items-center justify-center">
-        <SessionProvider>
-          <AccountButton />
-          <ModeToggle />
-        </SessionProvider>
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </header>
   );

@@ -1,17 +1,11 @@
-import { auth } from "@/auth";
-import { redirect } from "next/navigation";
 import ReceiptComponent from "@/components/create-page/receipt-component";
 import FriendsComponent from "@/components/create-page/friends-component";
 import { Button } from "@/components/ui/button";
 
 export default async function CreatePage() {
-  const session = await auth();
 
-  if (!session) {
-    redirect("account/signin");
-  }
   return (
-    <div className="h-full w-full flex items-center justify-center p-2 space-x-10 grid grid-cols-3 gap-2">
+    <div className="h-full w-full items-center justify-center p-2 space-x-10 grid grid-cols-3 gap-2">
       <div className="h-full col-span-2">
         <ReceiptComponent />
       </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import NavLink from "./nav-link";
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
-
+import { ModeToggle } from "../ui/mode-toggle";
 export default function Header() {
   return (
     <header className="flex min-w-screen p-4">
@@ -30,6 +30,8 @@ export default function Header() {
         <SignedIn>
           <UserButton />
         </SignedIn>
+        <ModeToggle />
+
       </div>
     </header>
   );

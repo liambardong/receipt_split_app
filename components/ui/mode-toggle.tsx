@@ -4,18 +4,12 @@ import * as React from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
-import { getSystemTheme } from "../theme-provider";
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    if (theme === "system") {
-      const systemTheme = getSystemTheme();
-      setTheme(systemTheme === "light" ? "dark" : "light");
-    } else {
-      setTheme(theme == "light" ? "dark" : "light");
-    }
+    setTheme(theme == "light" ? "dark" : "light");
   };
   return (
     <Button onClick={toggleTheme} variant="outline" size="icon">

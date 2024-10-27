@@ -3,7 +3,9 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/header";
 import { ThemeProvider } from "@/components/theme-provider";
-import { SessionProvider } from "next-auth/react";
+import {
+  ClerkProvider,
+} from '@clerk/nextjs'
 
 const dm_sans = DM_Sans({ subsets: ["latin"] });
 
@@ -21,22 +23,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={dm_sans.className} suppressHydrationWarning>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SessionProvider>
-            <div className="flex flex-col h-screen">
+    <ClerkProvider>
+      <html lang="en">
+        <body className={` ${dm_sans.className}`} suppressHydrationWarning>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="flex flex-col h-screen min-w-[400px]">
               <Header />
               <main className="flex-grow">{children}</main>
             </div>
-          </SessionProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -1,5 +1,5 @@
-import { BorderWrapper } from "./border-wrapper";
-import FriendsList from "./friends-list";
+import { BorderWrapper } from "./ui/border-wrapper";
+import FriendsList from "./ui/friends-list";
 
 export default function FriendsComponent() {
   return (

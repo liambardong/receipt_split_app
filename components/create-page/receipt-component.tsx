@@ -1,7 +1,7 @@
-import { BorderWrapper } from "./border-wrapper";
-import CostInfo from "./cost-info";
-import ReceiptInfo from "./receipt-info";
-import RestaurantInfo from "./restaurant-info";
+import { BorderWrapper } from "./ui/border-wrapper";
+import CostInfo from "./ui/cost-info";
+import ReceiptInfo from "./ui/receipt-info";
+import RestaurantInfo from "./ui/restaurant-info";
 
 export default async function ReceiptComponent() {
   return (
